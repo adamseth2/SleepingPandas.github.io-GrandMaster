@@ -1,0 +1,28 @@
+{
+  "name": "server.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamseth2/SleepingPandas.github.io-GrandMaster.git"
+  },
+  "author": "Adam Chhor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adamseth2/SleepingPandas.github.io-GrandMaster/issues"
+  },
+  "homepage": "https://github.com/adamseth2/SleepingPandas.github.io-GrandMaster#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^4.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
