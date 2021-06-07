@@ -1,0 +1,72 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+body {
+  background: #272727;
+  color: green;
+}
+
+#game-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-columns: (minmax(400px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  margin: 0 10%;
+}
+
+#game-grid h1 {
+  text-align: center;
+  margin: 3em 0;
+}
+
+#game-grid a {
+  margin: 5em 0.5em;
+}
+
+#game-grid .card {
+  color: #e7e7e7;
+}
+
+#game-grid .card img {
+  width: 100%;
+  height: auto;
+}
+
+#game-grid .card .card-caption {
+  background-color: #ff652f;
+  padding-bottom: 1em;
+  text-align: center;
+}
+
+#game-grid .card .card-caption h2 {
+  padding: 0.25em 0;
+}
+
+#game-grid .card .card-caption p {
+  padding: 1em 1em 0 1em;
+  height: 10ch;
+  font-size: 1em;
+  text-align: center;
+}
+
+#game-grid .card .card-caption .card-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}

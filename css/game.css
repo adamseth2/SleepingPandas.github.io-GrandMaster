@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+body {
+  background: #272727;
+  color: green;
+}
+
+body {
+  background: #272727;
+}
+
+#game {
+  width: 85%;
+  max-width: 70rem;
+  margin: auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}

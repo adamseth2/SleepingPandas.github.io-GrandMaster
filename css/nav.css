@@ -1,0 +1,113 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+body {
+  background: #272727;
+  color: green;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  max-width: 50rem;
+  margin: 8rem auto 0 auto;
+  padding: 0.5rem;
+  border: blue 3px solid;
+  background-color: #399731;
+  position: relative;
+}
+
+nav .hoverLink {
+  color: inherit;
+}
+
+nav .hoverLink:active {
+  color: #272727;
+}
+
+nav #logo {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-45%);
+          transform: translate(-45%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: -2.5rem;
+}
+
+nav #logo h1 {
+  font-size: 2rem;
+  white-space: nowrap;
+}
+
+nav #logo img {
+  width: 6rem;
+  -webkit-transform: translate(1rem, -35%);
+          transform: translate(1rem, -35%);
+}
+
+nav .button-container {
+  padding: 0 1rem;
+}
+
+nav .last-item {
+  margin-left: auto;
+}
+
+nav .icon-style {
+  position: relative;
+  top: 0.1rem;
+  color: black;
+}
+
+nav a {
+  font-family: 4rem;
+}
+
+nav label {
+  height: 200%;
+}
+
+nav #search-bar {
+  width: 50%;
+  margin: 0 auto;
+}
+
+nav #search-bar input[type='text'] {
+  width: 70%;
+  max-width: 30rem;
+  background: none;
+  height: 2rem;
+  border: #e7e7e7 3px solid;
+}
+
+nav #search-bar input[type='text']::-webkit-input-placeholder {
+  color: #272727;
+}
+
+nav #search-bar input[type='text']:-ms-input-placeholder {
+  color: #272727;
+}
+
+nav #search-bar input[type='text']::-ms-input-placeholder {
+  color: #272727;
+}
+
+nav #search-bar input[type='text']::placeholder {
+  color: #272727;
+}
