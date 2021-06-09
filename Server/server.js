@@ -12,7 +12,6 @@ const io = socketIo(server)(PORT, {
     allowedHeaders: '*',
     origin: '*',
     methods: ['GET', 'POST'],
-    allowedHeaders: ['my-custom-header'],
     credentials: true,
   },
 });
