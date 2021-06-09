@@ -3,15 +3,23 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 
-const PORT = process.env.PORT ?? 3000;
+const PORT = process.env.PORT ?? 5500;
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
-// io.set(origins, '*:*');
+const io = socketIo(server, {
+  cors: {
+    origin: ['http://localhost:5500', 'http://127.0.0.1:5500'],
+    methods: ['GET', 'POST'],
+    transports: ['websocket', 'polling'],
+    credentials: true,
+  },
+  allowEIO3: true,
+});
+// io.set('origins', '*:*');
 // io.set(allowedHeaders, '*');
 //Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.join(__dirname, 'games')));
 
 //Constants
