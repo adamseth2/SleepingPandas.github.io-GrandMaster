@@ -12,6 +12,9 @@ const io = socketIo(server)(PORT, {
     origin: [
       'https://justindood.github.io/SleepingPandas.github.io/games/ticTacToe/ticTacToe.html',
     ],
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['my-custom-header'],
+    credentials: true,
   },
 });
 //Set static folder
