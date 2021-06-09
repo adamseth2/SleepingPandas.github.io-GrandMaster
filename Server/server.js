@@ -7,7 +7,7 @@ const PORT = process.env.PORT ?? 3000;
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server)(PORT, { transports: ['websocket'] });
+const io = socketIo(server);
 // io.set(origins, '*:*');
 // io.set(allowedHeaders, '*');
 //Set static folder
