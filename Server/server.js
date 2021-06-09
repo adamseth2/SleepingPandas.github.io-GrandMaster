@@ -9,7 +9,10 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: ['http://localhost:5500', 'http://127.0.0.1:5500'],
+    origin: [
+      'https://sleepingpandagaming.herokuapp.com/',
+      'http://127.0.0.1:5500',
+    ],
     methods: ['GET', 'POST'],
     transports: ['websocket', 'polling'],
     credentials: true,
