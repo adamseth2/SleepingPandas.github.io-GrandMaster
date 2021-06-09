@@ -9,9 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server)(PORT, {
   cors: {
-    origin: [
-      'https://justindood.github.io/SleepingPandas.github.io/games/ticTacToe/ticTacToe.html',
-    ],
+    origin: '*',
     methods: ['GET', 'POST'],
     allowedHeaders: ['my-custom-header'],
     credentials: true,
