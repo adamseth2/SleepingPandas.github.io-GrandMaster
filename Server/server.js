@@ -3,9 +3,17 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 
+const PORT = process.env.PORT ?? 3000;
+
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server)(PORT, {
+  cors: {
+    origin: [
+      'https://justindood.github.io/SleepingPandas.github.io/games/ticTacToe/ticTacToe.html',
+    ],
+  },
+});
 //Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.join(__dirname, 'games')));
@@ -95,5 +103,4 @@ function makeId(length) {
   return result;
 }
 
-const PORT = process.env.PORT ?? 3000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
