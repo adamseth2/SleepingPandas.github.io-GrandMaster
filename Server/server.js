@@ -17,6 +17,7 @@ const io = socketIo(server)(PORT, {
     credentials: true,
   },
 });
+io.set('origins', '*:*');
 //Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.join(__dirname, 'games')));
