@@ -10,8 +10,60 @@ const io = socketIo(server);
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.join(__dirname, 'games')));
 
+//Constants
+const clientRooms = {};
+
 //Run when client connects
 io.on('connection', socket => {
+  socket.on('joinGame', handleJoinGame);
+  socket.on('newGame', handleNewGame);
+  //joinGame
+  function handleJoinGame(roomName) {
+    console.log(`Room ID on server is ${roomName}`);
+    const room = io.sockets.adapter.rooms.get(roomName);
+    socket.emit('console', clientRooms);
+    socket.emit('console', room);
+    socket.emit('console', io.of('/').adapter.rooms);
+    // const rooms = Object.keys(io.sockets.adapter.rooms);
+    // console.log(io.sockets.adapter.rooms);
+    // socket.broadcast.emit('console', io.sockets.adapter);
+    // console.log(io.nsps['/'].adapter.rooms);
+    // console.log(`Room is equals ${room}`);
+
+    console.log(clientRooms.roomName);
+    console.log(clientRooms);
+    console.log(io.sockets.adapter.rooms.has(clientRooms[socket.id]));
+    console.log(io.sockets.adapter.rooms);
+    console.log(room);
+
+    let numClients = 0;
+    if (room) {
+      console.log(room);
+      numClients = room.size;
+      console.log(`The number of clients is ${numClients}`);
+    }
+    if (numClients === 0) {
+      socket.emit('unknownCodeHandler');
+      return;
+    } else if (numClients > 1) {
+      socket.emit('tooManyPlayersHandler');
+      return;
+    }
+    clientRooms[socket.id] = roomName;
+    socket.join(roomName);
+    socket.emit('codeSucessfulHandler');
+    socket.to(clientRooms[socket.id]).emit('userJoinedHandler');
+    socket.number = 2;
+  }
+  function handleNewGame() {
+    let joinCode = makeId(4);
+    clientRooms[socket.id] = joinCode;
+    console.log(clientRooms);
+    socket.emit('gameCodeHandler', joinCode);
+
+    socket.join(joinCode);
+    socket.number = 1;
+  }
   console.log('New WS Connection...');
   socket.on('clickBoard', number => {
     console.log(number);
@@ -25,13 +77,24 @@ io.on('connection', socket => {
 
   //Listen for valid click board
   socket.on('clickBoard', squareId => {
-    socket.broadcast.emit('clickBoardHandler', squareId);
+    io.to(clientRooms[socket.id]).emit('clickBoardHandler', squareId);
   });
   //Restarts Game
   socket.on('restart', player1Turn => {
     socket.broadcast.emit('restartHanlder', player1Turn);
   });
 });
+
+//Make unique ID
+function makeId(length) {
+  var result = '';
+  var characters = '0123456789';
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
 
 const PORT = 3000 ?? process.env.PORT;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
