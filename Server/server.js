@@ -110,4 +110,4 @@ function makeId(length) {
   return result;
 }
 
-io.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+io.listen(PORT /* () => console.log(`Server running on port ${PORT}`)*/);
