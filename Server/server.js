@@ -11,7 +11,7 @@ const io = socketIo(server, {
   cors: {
     origin: [
       'https://sleepingpandagaming.herokuapp.com/',
-      'http://127.0.0.1:5500',
+      'https://justindood.github.io',
     ],
     methods: ['GET', 'POST'],
     transports: ['websocket', 'polling'],
