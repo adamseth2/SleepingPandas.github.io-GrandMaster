@@ -1,13 +1,13 @@
-const path = require('path');
-const express = require('express');
-const http = require('http');
+// const path = require('path');
+// const express = require('express');
+// const http = require('http');
 const socketIo = require('socket.io');
 
 const PORT = process.env.PORT ?? 5500;
 
-const app = express();
-const server = http.createServer(app);
-const io = socketIo(server, {
+// const app = express();
+// const server = http.createServer(app);
+const io = socketIo({
   cors: {
     origin: [
       'https://sleepingpandagaming.herokuapp.com/',
@@ -110,4 +110,4 @@ function makeId(length) {
   return result;
 }
 
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+io.listen(PORT, () => console.log(`Server running on port ${PORT}`));
